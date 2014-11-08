@@ -6,18 +6,50 @@ import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
+import flixel.addons.display.FlxStarField.FlxStarField2D;
+import flixel.util.FlxSpriteUtil;
+import flixel.util.FlxColor;
 
 /**
  * A FlxState which can be used for the game's menu.
  */
 class MenuState extends FlxState
 {
+	
+	private var playBtn:FlxButton;
+	
+	private var star:FlxStarField2D;
+	
+	private var title:FlxText;
+	
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
 	override public function create():Void
 	{
 		super.create();
+		
+		playBtn = new FlxButton(0, 0, "Start", startClick);
+		
+		FlxSpriteUtil.screenCenter(playBtn, true, true);
+		
+		star = new FlxStarField2D(0, 0, FlxG.width, FlxG.height);
+		
+		star.setStarSpeed(1, 20);
+		star.setStarDepthColors(10, FlxColor.CHARTREUSE, FlxColor.YELLOW);
+		
+		title = new FlxText(0, 25, FlxG.width, "Fireflies", 72);
+		title.alignment = "center";
+		
+		FlxSpriteUtil.screenCenter(title, true, false);
+		
+		add(star);
+		add(playBtn);
+		add(title);
+		
+	}
+	
+	private function startClick():Void {
 		FlxG.switchState(new PlayState());
 	}
 	

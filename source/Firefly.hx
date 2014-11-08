@@ -3,6 +3,7 @@ package ;
 import flixel.FlxSprite;
 import flixel.util.FlxColor;
 import flixel.FlxG;
+import flixel.util.FlxSpriteUtil;
 
 /**
  * ...
@@ -29,37 +30,10 @@ class Firefly extends FlxSprite
 	override public function update():Void {
 		super.update();
 		
-		if (FlxG.keys.anyPressed(["LEFT", "A"])) {
-			velocity.x = -speed;
-		}
+		this.x = FlxG.mouse.screenX - this.width/2;
+		this.y = FlxG.mouse.screenY - this.height/2;
 		
-		if (FlxG.keys.anyPressed(["RIGHT", "D"])) {
-			velocity.x = speed;
-		}
-		
-		if (FlxG.keys.anyPressed(["UP", "W"])) {
-			velocity.y = -speed;
-		}
-		
-		if (FlxG.keys.anyPressed(["DOWN", "S"])) {
-			velocity.y = speed;
-		}
-		
-		if (this.x + this.width / 4 > FlxG.width) {
-			this.x = 0 + this.width/4;
-		} 
-		
-		if (this.x - this.width / 4 < 0) {
-			this.x = FlxG.width - this.width/4;
-		}
-		
-		if (this.y + this.height / 4 > FlxG.height) {
-			this.y = 0 + this.height/4;
-		} 
-		
-		if (this.y - this.height / 4 < 0) {
-			this.y = FlxG.height - this.height/4;
-		}
+		FlxSpriteUtil.screenWrap(this, true, true, true, true);
 	}
 	
 }
