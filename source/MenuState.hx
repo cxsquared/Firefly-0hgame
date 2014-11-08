@@ -37,16 +37,16 @@ class MenuState extends FlxState
 		
 		star.setStarSpeed(1, 20);
 		star.setStarDepthColors(10, FlxColor.CHARTREUSE, FlxColor.YELLOW);
+		star.bgColor = FlxColor.TRANSPARENT;
 		
 		title = new FlxText(0, 25, FlxG.width, "Fireflies", 72);
 		title.alignment = "center";
 		
 		FlxSpriteUtil.screenCenter(title, true, false);
 		
+		add(title);
 		add(star);
 		add(playBtn);
-		add(title);
-		
 	}
 	
 	private function startClick():Void {

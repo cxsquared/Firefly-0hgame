@@ -18,17 +18,15 @@ class Jar extends FlxSprite
 	{
 		dir = FlxRandom.intRanged(0, 3);
 		if (dir == 0) {
-			super(FlxRandom.intRanged(0, FlxG.width), FlxG.height + 50);
-			makeGraphic(75, 100, FlxColor.BLUE);
+			super(FlxRandom.intRanged(0, FlxG.width), FlxG.height + 50, AssetPaths.jar__png);
 		} else if (dir == 2) {
-			super(FlxRandom.intRanged(0, FlxG.width), -50);
-			makeGraphic(75, 100, FlxColor.BLUE);
+			super(FlxRandom.intRanged(0, FlxG.width), -50, AssetPaths.jar__png);
+			flipY = true;
 		}  else if (dir == 3) {
-			super( -50, FlxRandom.intRanged(0, FlxG.height));
-			makeGraphic(100, 75, FlxColor.BLUE);
+			super( -50, FlxRandom.intRanged(0, FlxG.height), AssetPaths.jarSide__png);
 		}  else if (dir == 4) {
-			super(FlxG.width + 50, FlxRandom.intRanged(0, FlxG.height));
-			makeGraphic(100, 75, FlxColor.BLUE);
+			super(FlxG.width + 50, FlxRandom.intRanged(0, FlxG.height), AssetPaths.jarSide__png);
+			flipX = true;
 		}
 		drag.x = 50;
 		drag.y = 50;	
